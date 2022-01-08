@@ -1,23 +1,28 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import AppText from "../components/AppText";
+import { View, StyleSheet } from "react-native";
+import { Image } from "react-native-expo-image-cache";
 import colors from "../config/colors";
-import ListItem from "../components/ListItem";
+import ListItem from "../components/lists/ListItem";
+import Text from "../components/Text";
 
-function ListingDetailsScreen(props) {
+function ListingDetailsScreen({ route }) {
+  const listing = route.params;
+
   return (
     <View>
       <Image
         style={styles.image}
-        source={require("../assets/Images/jacket.jpg")}
+        preview={{ uri: listing.images[0].thumbnailUrl }}
+        tint="light"
+        uri={listing.images[0].url}
       />
-      <View style={styles.DetailsContainer}>
-        <AppText style={styles.title}>Red Jacket for sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
+      <View style={styles.detailsContainer}>
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.price}>${listing.price}</Text>
         <View style={styles.userContainer}>
           <ListItem
-            image={require("../assets/Images/Ans.jpg")}
-            title="Karim Ansary"
+            image={require("../assets/mosh.jpg")}
+            title="Mosh Hamedani"
             subTitle="5 Listings"
           />
         </View>
@@ -25,26 +30,27 @@ function ListingDetailsScreen(props) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
+  detailsContainer: {
+    padding: 20,
+  },
   image: {
     width: "100%",
     height: 300,
-  },
-  DetailsContainer: {
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "500",
   },
   price: {
     color: colors.secondary,
     fontWeight: "bold",
     fontSize: 20,
-    marginVertical: 7,
+    marginVertical: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "500",
   },
   userContainer: {
-    marginVertical: 30,
+    marginVertical: 40,
   },
 });
 

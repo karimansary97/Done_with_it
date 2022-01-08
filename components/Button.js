@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import colors from "../config/colors";
 
@@ -20,13 +20,12 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
-    padding: "15",
+    padding: 15,
     width: "100%",
-    height: 50,
-    marginVertical: 7,
+    marginVertical: 10,
   },
   text: {
-    color: "white",
+    color: colors.white,
     fontSize: 18,
     textTransform: "uppercase",
     fontWeight: "bold",
